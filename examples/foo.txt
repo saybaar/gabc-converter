@@ -1,0 +1,4 @@
+office-part:Tractus;
+mode:8;
+%%
+(c4) glo(abc~)ri(devf)a(feo~d)
