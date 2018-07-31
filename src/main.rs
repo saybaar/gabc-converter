@@ -10,7 +10,7 @@ fn main() -> io::Result<()> {
     let mut text = String::new();
     file.read_to_string(&mut text).expect("Error reading file");
     //derived from example from the book:
-    let output = gabc_parser::parse_file(&text);
+    let output = gabc_parser::parse_to_struct(&text);
     io::stdout().write(serde_json::to_string(&output).unwrap().as_bytes())?;
     Ok(())
 }
