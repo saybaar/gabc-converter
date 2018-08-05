@@ -44,8 +44,8 @@ fn main() -> io::Result<()> {
     let parse_output = gabc_parser::parse_to_struct(&text);
 
     let output: String = match matches.value_of("target") {
-        Some("json") => serde_json::to_string(&parse_output).unwrap(),
-        Some("lilypond") => unimplemented!("Lilypond conversion not yet implemented"),
+        Some("json") => gabc_parser::parse_to_json(&text),
+        Some("lilypond") => gabc_parser::parse_to_lilypond(&text),
         _ => panic!("Impossible target"),
     };
 
