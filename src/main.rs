@@ -19,10 +19,10 @@ fn main() -> io::Result<()> {
         .arg(
             Arg::with_name("target")
                 .long("target")
-                .help("Conversion target (\"lilypond\" or \"json\")")
+                .help("Conversion target (\"lilypond\", \"json\", or \"debug-print\")")
                 .required(true)
                 .takes_value(true)
-                .possible_values(&["lilypond", "json"]),
+                .possible_values(&["lilypond", "json", "debug-print"]),
         )
         .arg(
             Arg::with_name("OUTPUT")
@@ -46,6 +46,7 @@ fn main() -> io::Result<()> {
     let output: String = match matches.value_of("target") {
         Some("json") => gabc_parser::parse_to_json(&text),
         Some("lilypond") => gabc_parser::parse_to_lilypond(&text),
+        Some("debug-print") => gabc_parser::debug_print(&text),
         _ => panic!("Impossible target"),
     };
 
