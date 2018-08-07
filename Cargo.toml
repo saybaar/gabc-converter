@@ -1,5 +1,5 @@
 [package]
-name = "gabc2json"
+name = "gabc-converter"
 version = "0.1.0"
 authors = ["lydia"]
 
