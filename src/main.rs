@@ -1,6 +1,7 @@
 extern crate clap;
 extern crate gabc_parser;
 extern crate serde_json;
+use gabc_parser::{GabcFile, GABCParser, Rule, parse_file};
 use clap::{App, Arg};
 use std::fs::File;
 use std::io::{self, Read, Write};
@@ -41,12 +42,11 @@ fn main() -> io::Result<()> {
 
     let mut text = String::new();
     input_source.read_to_string(&mut text).expect("Error reading file");
-    let parse_output = gabc_parser::parse_to_struct(&text);
 
     let output: String = match matches.value_of("target") {
-        Some("json") => gabc_parser::parse_to_json(&text),
-        Some("lilypond") => gabc_parser::parse_to_lilypond(&text),
-        Some("debug-print") => gabc_parser::debug_print(&text),
+        Some("json") => GabcFile::new(&text).as_json(),
+        Some("lilypond") => GabcFile::new(&text).as_lilypond(),
+        Some("debug-print") => gabc_parser::debug_print(parse_file(&text)),
         _ => panic!("Impossible target"),
     };
 
