@@ -1,3 +1,7 @@
+# Copyright (c) 2018 Lydia Simmons
+# This software is licensed under the GNU General Public License v3.0.
+# See the LICENSE file in this distribution for license terms.
+
 [package]
 name = "gabc-converter"
 version = "0.1.0"
