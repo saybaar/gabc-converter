@@ -1,6 +1,6 @@
 //Copyright (c) 2018 Lydia Simmons
 //This software is licensed under the GNU General Public License v3.0.
-//See the LICENSE file in this distribution for license terms. 
+//See the LICENSE file in this distribution for license terms.
 
 extern crate clap;
 extern crate gabc_parser;
@@ -8,6 +8,7 @@ extern crate serde_json;
 use clap::{App, Arg};
 use gabc_parser::{parse_file, GabcFile};
 use std::fs::File;
+use std::fs::OpenOptions;
 use std::io::{self, Read, Write};
 
 fn main() -> io::Result<()> {
@@ -59,10 +60,44 @@ fn main() -> io::Result<()> {
     };
 
     let mut output_source: Box<Write> = match matches.value_of("output") {
-        Some(s) => Box::new(File::create(s).expect("Error opening file")),
+        Some(s) => {
+            match OpenOptions::new().write(true).create_new(true).open(s) {
+                Ok(f) => Box::new(f),
+                Err(e) => handle_output_file_error(&s, e),
+            }
+        },
         None => Box::new(std::io::stdout()),
     };
 
     output_source.write(output.as_bytes())?;
     Ok(())
+}
+
+fn handle_output_file_error(dest: &str, e: std::io::Error) -> Box<Write> {
+    match e.kind() {
+        std::io::ErrorKind::AlreadyExists => {
+            return ask(dest);
+        }
+        _ => {
+            println!("Error opening file {}; exiting", dest);
+            std::process::exit(1);
+        }
+    }
+}
+
+fn ask(dest: &str) -> Box<Write> {
+    loop {
+        println!("Replace existing file {} ? [y/N]", dest);
+        let mut s = String::new();
+        //let _ = io::stdout().flush();
+        io::stdin().read_line(&mut s).expect("error reading line");
+        match s.trim().as_ref() {
+            "Y" | "y" => return Box::new(File::create(dest).expect("error replacing file")),
+            "N" | "n" | "" => {
+                println!("Exiting.");
+                std::process::exit(0);
+            },
+            _ => (),
+        }
+    }
 }
