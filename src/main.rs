@@ -6,7 +6,7 @@ extern crate clap;
 extern crate gabc_parser;
 extern crate serde_json;
 use clap::{App, Arg};
-use gabc_parser::{GabcFile, parse_gabc_file};
+use gabc_parser::{GabcFile, parse_gabc};
 use std::fs::File;
 use std::fs::OpenOptions;
 use std::io::{self, Read, Write};
@@ -61,7 +61,7 @@ fn main() -> io::Result<()> {
     let output: String = match matches.value_of("TARGET") {
         Some("json") => GabcFile::new(&text).as_json(),
         Some("lilypond") => GabcFile::new(&text).as_lilypond(),
-        Some("debug-print") => gabc_parser::debug_print(parse_gabc_file(&text)),
+        Some("debug-print") => gabc_parser::debug_print(parse_gabc(&text, gabc_parser::Rule::file)),
         _ => panic!("Impossible target"),
     };
 
