@@ -20,15 +20,15 @@ Input and output files may optionally be specified with the `-i` and `-o` flags.
 ### Usage examples
 With -i and -o flags:
 ```
-gabc-converter lilypond -i ./examples/ab_ortu_solis.gabc -o ./ab_ortu_solis.ly
+gabc-converter lilypond -i ./examples/populus_sion.gabc -o ./populus_sion.ly
 ```
 On a Linux system, using I/O redirection with STDIN and STDOUT instead of flags:
 ```
-./examples/ab_ortu_solis.gabc > gabc-converter lilypond > ./ab_ortu_solis.ly
+./examples/populus_sion.gabc > gabc-converter lilypond > ./populus_sion.ly
 ```
 Without an -o flag or output redirection, the program will simply print the output to STDOUT:
 ```
-gabc-converter lilypond -i ./examples/ab_ortu_solis.gabc
+gabc-converter lilypond -i ./examples/populus_sion.gabc
 ```
 
 ## Example gabc files
@@ -50,11 +50,13 @@ Auto-generated Lilypond output may require adjustments, especially to the transp
 * [lygre](https://github.com/igneus/lygre): Conversion from gabc to Lilypond. Written in Ruby.
 
 ### Gregorio and gabc
+gabc is part of [the Gregorio project](http://gregorio-project.github.io/index.html), which also includes the GregorioTeX tool for rendering gabc. GregorioTeX can be [installed locally](http://gregorio-project.github.io/installation.html), but web renderers like [run.gregoriochant.org](http://run.gregoriochant.org) are a simpler option.  
 * [Gregorio on GitHub](https://github.com/gregorio-project/gregorio)
 * [gabc documentation](http://gregorio-project.github.io/gabc/index.html)
 
 ### Lilypond
-* [Lilypond website](http://lilypond.org)
+Lilypond files can be rendered with `lilypond file.ly` on a [local installation], or through a web renderer like [lilybin](http://lilybin.com/). 
+* [Lilypond documentation](http://lilypond.org/manuals.html)
 _______________
 Copyright (c) 2018 Lydia Simmons  
 This software is licensed under the GNU General Public License v3.0. See the LICENSE file in this distribution for license terms.
