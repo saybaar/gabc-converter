@@ -1,4 +1,0 @@
-office-part:Tractus;
-mode:8;
-%%
-(c1) glo(abc~)ri(dev:f)a(feo~,d)(::)
