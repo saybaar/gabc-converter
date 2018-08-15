@@ -50,12 +50,12 @@ Auto-generated Lilypond output may require adjustments, especially to the transp
 * [lygre](https://github.com/igneus/lygre): Conversion from gabc to Lilypond. Written in Ruby.
 
 ### Gregorio and gabc
-gabc is part of [the Gregorio project](http://gregorio-project.github.io/index.html), which also includes the GregorioTeX tool for rendering gabc. GregorioTeX can be [installed locally](http://gregorio-project.github.io/installation.html), but web renderers like [run.gregoriochant.org](http://run.gregoriochant.org) are a simpler option.  
+gabc is part of [the Gregorio project](http://gregorio-project.github.io/index.html), which also includes the GregorioTeX tool for rendering gabc. GregorioTeX can be [installed locally](http://gregorio-project.github.io/installation.html), which may be a complicated process. Web renderers like [run.gregoriochant.org](http://run.gregoriochant.org) are a simpler option.  
 * [Gregorio on GitHub](https://github.com/gregorio-project/gregorio)
 * [gabc documentation](http://gregorio-project.github.io/gabc/index.html)
 
 ### Lilypond
-Lilypond files can be rendered with `lilypond file.ly` on a [local installation], or through a web renderer like [lilybin](http://lilybin.com/). 
+Lilypond files can be rendered with `lilypond file.ly` on a [local installation](http://lilypond.org/download.html), or through a web renderer like [lilybin](http://lilybin.com/). 
 * [Lilypond documentation](http://lilypond.org/manuals.html)
 _______________
 Copyright (c) 2018 Lydia Simmons  
