@@ -1,30 +1,60 @@
 # gabc-converter
-This is a command-line program to convert gabc files to JSON or Lilypond. It provides a basic interface to functions in the (LINK) gabc-parser Rust library.
+gabc-converter is a command-line tool to convert gabc files to JSON or Lilypond. It provides a basic interface to functions in the [gabc-parser](https://github.com/saybaar/gabc-parser) Rust library.
 
 ## Build and installation
-To build and install this program, you will need the Rust programming language. To install Rust, see <https://rustup.rs/>.
+To build and install this program, you will need the Rust programming language and its build tool, cargo. See [rustup.rs](https://rustup.rs/) to install them.
 
-Once Rust is installed, you can run "cargo test" to test the application, "cargo build" to build it (the binary will appear in target/debug/ and can be run from there), and "cargo install" to install it system-wide (see <https://doc.rust-lang.org/book/second-edition/ch14-04-installing-binaries.html> for more information on the "cargo install" command).
+Clone this repository with `git clone https://github.com/saybaar/gabc-converter.git`.
+
+From the project directory, run `cargo test` to test the application, `cargo build` to build it without installing (the gabc-converter binary will appear in target/debug/ and can be run from there), or `cargo install` to build and install it (see [here](https://doc.rust-lang.org/book/second-edition/ch14-04-installing-binaries.html) for help with the "cargo install" command).  
+
+This tool has only been tested on Linux systems. If you would like to use it on another OS and run into problems, please open an issue!
 
 ## Usage
+```
 gabc-converter <TARGET> [-i INPUT] [-o OUTPUT]
-<TARGET> is one of json (for JSON output), lilypond (for Lilypond output), or debug-print (which will print the gabc input's parse tree - may be useful for analysis and debugging).
-INPUT and OUTPUT files may optionally be specified with the -i and -o flags. If not specified, input will default to STDIN and output to STDOUT.
+```
+`<TARGET>` can be `json`, `lilypond`, or `debug-print` (which prints the gabc input's parse tree for analysis and debugging).  
+Input and output files may optionally be specified with the `-i` and `-o` flags. If not specified, input will default to STDIN and output to STDOUT.
 
-Usage examples:
+### Usage examples
 With -i and -o flags:
-gabc-converter json -i ./examples/ab_ortu_solis.gabc -o ./ab_ortu_solis.ly
-On a Linux system, using I/O redirection instead of flags:
-./examples/ab_ortu_solis.gabc > gabc-converter json > ./ab_ortu_solis.ly
+```
+gabc-converter lilypond -i ./examples/ab_ortu_solis.gabc -o ./ab_ortu_solis.ly
+```
+On a Linux system, using I/O redirection with STDIN and STDOUT instead of flags:
+```
+./examples/ab_ortu_solis.gabc > gabc-converter lilypond > ./ab_ortu_solis.ly
+```
 Without an -o flag or output redirection, the program will simply print the output to STDOUT:
-gabc-converter json -i ./examples/ab_ortu_solis.gabc
+```
+gabc-converter lilypond -i ./examples/ab_ortu_solis.gabc
+```
 
-## Related work
-(TODO) may be more mature options for Lilypond conversion.
+## Example gabc files
+The gabc files in /examples should all play nicely with this program. populus_sion.gabc is the canonical example in [the gabc documentation](http://gregorio-project.github.io/gabc/details.html), and the other examples are from [gregobase](https://gregobase.selapa.net/).
 
-## Gregorio and gabc
-* <https://github.com/gregorio-project/gregorio>
-* <http://gregorio-project.github.io/gabc/index.html>
+## Limitations
+This tool is under development and doesn't yet recognize all gabc syntax. Major gabc features not yet supported include:
+* Accidentals and flat clefs (e.g. "cb2")
+* gabc comments
+* Text above or below the staff
 
-## Lilypond
-* <http://lilypond.org>
+Auto-generated Lilypond output may require adjustments, especially to the transposition range (which is c -> c' by default) or to correct formatting and alignment of lyrics.  
+
+## Resources
+### Other gabc tools
+* [gabctk](https://github.com/jperon/gabctk): A toolkit for gabc, including conversion to Lilypond, abc, midi, and others. Written in Python and documented (only) in French.
+* [gabc2mid](https://github.com/jperon/gabc2mid): An earlier iteration of gabctk with midi conversion only. Written in Python with English documentation available.
+* [gabc-to-ly](https://github.com/ahinkley/gabc-to-ly): Conversion from gabc to Lilypond via a .csv file, which can be manually edited to add organ accompaniment chords. Written in Python.
+* [lygre](https://github.com/igneus/lygre): Conversion from gabc to Lilypond. Written in Ruby.
+
+### Gregorio and gabc
+* [Gregorio on GitHub](https://github.com/gregorio-project/gregorio)
+* [gabc documentation](http://gregorio-project.github.io/gabc/index.html)
+
+### Lilypond
+* [Lilypond website](http://lilypond.org)
+_______________
+Copyright (c) 2018 Lydia Simmons  
+This software is licensed under the GNU General Public License v3.0. See the LICENSE file in this distribution for license terms.
