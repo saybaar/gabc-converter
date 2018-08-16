@@ -5,9 +5,12 @@
 [package]
 name = "gabc-converter"
 version = "0.1.0"
-authors = ["lydia"]
+authors = ["Lydia Simmons"]
+description = "A simple converter from gabc to JSON or Lilypond"
+repository = "github.com/saybaar/gabc-converter"
+license = "GPL-3.0-or-later"
 
 [dependencies]
-gabc-parser = "0.1.0"
+gabc-parser = "0.1.1"
 serde_json = "1.0"
 clap = "2.32.0"
