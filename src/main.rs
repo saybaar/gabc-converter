@@ -89,7 +89,7 @@ fn ask_to_replace(dest: &str) -> Box<Write> {
     loop {
         println!("Replace existing file {} ? [y/N]", dest);
         let mut s = String::new();
-        //let _ = io::stdout().flush();
+        let _ = io::stdout().flush();
         io::stdin().read_line(&mut s).expect("error reading line");
         match s.trim().as_ref() {
             "Y" | "y" => return Box::new(File::create(dest).expect("error replacing file")),
