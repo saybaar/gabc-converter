@@ -2,11 +2,11 @@
 gabc-converter is a command-line tool to convert gabc files to JSON or Lilypond. It provides a basic interface to functions in the [gabc-parser](https://github.com/saybaar/gabc-parser) Rust library.
 
 ## Build and installation
-To build and install this program, you will need the Rust programming language and its build tool, cargo. See [rustup.rs](https://rustup.rs/) to install them.
+To build and install this program, you will need the Rust programming language and its build tool, cargo. See [rustup.rs](https://rustup.rs/) to install them. Rust will require
 
 Clone this repository with `git clone https://github.com/saybaar/gabc-converter.git`.
 
-From the project directory, run `cargo test` to test the application, `cargo build` to build it without installing (the gabc-converter binary will appear in target/debug/ and can be run from there), or `cargo install` to build and install it (see [here](https://doc.rust-lang.org/book/second-edition/ch14-04-installing-binaries.html) for help with the "cargo install" command).  
+From the project directory, run `cargo build` to build the application without installing (the gabc-converter binary will appear in target/debug/ and can be run from there), or `cargo install` to build and install it (see [here](https://doc.rust-lang.org/book/second-edition/ch14-04-installing-binaries.html) for help with the "cargo install" command; in particular, it requires that `$HOME/.cargo/bin` is in your `$PATH` environment variable).  
 
 This tool has only been tested on Linux systems. If you would like to use it on another OS and run into problems, please open an issue!
 
