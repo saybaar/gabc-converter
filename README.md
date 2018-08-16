@@ -2,7 +2,7 @@
 gabc-converter is a command-line tool to convert gabc files to JSON or Lilypond. It provides a basic interface to functions in the [gabc-parser](https://github.com/saybaar/gabc-parser) Rust library.
 
 ## Build and installation
-To build and install this program, you will need the Rust programming language and its build tool, cargo. See [rustup.rs](https://rustup.rs/) to install them. Rust will require
+To build and install this program, you will need the Rust programming language and its build tool, cargo. See [rustup.rs](https://rustup.rs/) to install them.
 
 Clone this repository with `git clone https://github.com/saybaar/gabc-converter.git`.
 
@@ -55,7 +55,7 @@ gabc is part of [the Gregorio project](http://gregorio-project.github.io/index.h
 * [gabc documentation](http://gregorio-project.github.io/gabc/index.html)
 
 ### Lilypond
-Lilypond files can be rendered with `lilypond file.ly` on a [local installation](http://lilypond.org/download.html), or through a web renderer like [lilybin](http://lilybin.com/). 
+Lilypond files can be rendered with `lilypond file.ly` on a [local installation](http://lilypond.org/download.html), or through a web renderer like [lilybin](http://lilybin.com/).
 * [Lilypond documentation](http://lilypond.org/manuals.html)
 _______________
 Copyright (c) 2018 Lydia Simmons  
